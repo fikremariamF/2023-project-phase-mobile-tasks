@@ -1,5 +1,4 @@
 import 'package:add_task/model/task.dart';
-import 'package:add_task/presentation/todo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -61,183 +60,185 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
         child: SizedBox(
             child: Form(
           key: formKey,
-          child: Column(children: [
-            const Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
-                  child: Text(
-                    "Main Task Name",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Color.fromARGB(255, 237, 96, 68)),
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color.fromARGB(255, 192, 192, 192)
-                        .withOpacity(0.5), // Color of shadow
-                    spreadRadius: 3, // Spread distance
-                    blurRadius: 5, // Blur radius
-                    offset: const Offset(2, 2), // Offset in X and Y axes
+          child: SingleChildScrollView(
+            child: Column(children: [
+              const Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
+                    child: Text(
+                      "Main Task Name",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: Color.fromARGB(255, 237, 96, 68)),
+                    ),
                   ),
                 ],
               ),
-              child: TextFormField(
-                controller: nameController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      borderSide: BorderSide(
-                          color: Color.fromARGB(0, 252, 116, 89), width: 0)),
-                  hintText: 'Task Name',
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 192, 192, 192)
+                          .withOpacity(0.5), // Color of shadow
+                      spreadRadius: 3, // Spread distance
+                      blurRadius: 5, // Blur radius
+                      offset: const Offset(2, 2), // Offset in X and Y axes
+                    ),
+                  ],
                 ),
-                validator: (String? name) {
-                  if (name == null || name.isEmpty) {
-                    return "Task name can not be empty";
-                  }
-                },
-              ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.01,
-            ),
-            const Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
-                  child: Text(
-                    "Due Date",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Color.fromARGB(255, 237, 96, 68)),
+                child: TextFormField(
+                  controller: nameController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(0, 252, 116, 89), width: 0)),
+                    hintText: 'Task Name',
                   ),
+                  validator: (String? name) {
+                    if (name == null || name.isEmpty) {
+                      return "Task name can not be empty";
+                    }
+                  },
                 ),
-              ],
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color.fromARGB(255, 192, 192, 192)
-                        .withOpacity(0.5), // Color of shadow
-                    spreadRadius: 3, // Spread distance
-                    blurRadius: 5, // Blur radius
-                    offset: const Offset(2, 2), // Offset in X and Y axes
-                  ),
-                ],
               ),
-              child: TextFormField(
-                controller: _dateController,
-                onTap: () {
-                  _selectDate(context);
-                },
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      borderSide: BorderSide(
-                          color: Color.fromARGB(0, 252, 116, 89), width: 0)),
-                  hintText: 'Select Date',
-                ),
-                validator: (String? name) {
-                  if (name == null || name.isEmpty) {
-                    return "Due-Date can not be empty";
-                  }
-                },
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.01,
               ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.02,
-            ),
-            const Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
-                  child: Text(
-                    "Description",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                        color: Color.fromARGB(255, 237, 96, 68)),
-                  ),
-                ),
-              ],
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.all(Radius.circular(10.0)),
-                boxShadow: [
-                  BoxShadow(
-                    color: const Color.fromARGB(255, 192, 192, 192)
-                        .withOpacity(0.5), // Color of shadow
-                    spreadRadius: 3, // Spread distance
-                    blurRadius: 5, // Blur radius
-                    offset: const Offset(2, 2), // Offset in X and Y axes
+              const Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
+                    child: Text(
+                      "Due Date",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: Color.fromARGB(255, 237, 96, 68)),
+                    ),
                   ),
                 ],
               ),
-              child: TextFormField(
-                controller: descriptionController,
-                maxLines: 3,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
-                      borderSide: BorderSide(
-                          color: Color.fromARGB(0, 252, 116, 89), width: 0)),
-                  hintText: 'Description',
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 192, 192, 192)
+                          .withOpacity(0.5), // Color of shadow
+                      spreadRadius: 3, // Spread distance
+                      blurRadius: 5, // Blur radius
+                      offset: const Offset(2, 2), // Offset in X and Y axes
+                    ),
+                  ],
                 ),
-                validator: (String? name) {
-                  if (name == null || name.isEmpty) {
-                    return "Desciption can not be empty";
-                  }
-                },
+                child: TextFormField(
+                  controller: _dateController,
+                  onTap: () {
+                    _selectDate(context);
+                  },
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(0, 252, 116, 89), width: 0)),
+                    hintText: 'Select Date',
+                  ),
+                  validator: (String? name) {
+                    if (name == null || name.isEmpty) {
+                      return "Due-Date can not be empty";
+                    }
+                  },
+                ),
               ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                final formValid = formKey.currentState!.validate();
-                if (!formValid) {
-                  return;
-                }
-                Navigator.pop(
-                    context,
-                    Task(
-                        name: nameController.text,
-                        dueDate: finalPickedDate,
-                        description: descriptionController.text));
-              },
-              style: ButtonStyle(
-                backgroundColor:
-                    MaterialStateProperty.all<Color>(const Color(0xFFEE6F57)),
-                shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(50)),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.02,
+              ),
+              const Row(
+                children: [
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5.0, horizontal: 10),
+                    child: Text(
+                      "Description",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: Color.fromARGB(255, 237, 96, 68)),
+                    ),
+                  ),
+                ],
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromARGB(255, 192, 192, 192)
+                          .withOpacity(0.5), // Color of shadow
+                      spreadRadius: 3, // Spread distance
+                      blurRadius: 5, // Blur radius
+                      offset: const Offset(2, 2), // Offset in X and Y axes
+                    ),
+                  ],
+                ),
+                child: TextFormField(
+                  controller: descriptionController,
+                  maxLines: 3,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                        borderSide: BorderSide(
+                            color: Color.fromARGB(0, 252, 116, 89), width: 0)),
+                    hintText: 'Description',
+                  ),
+                  validator: (String? name) {
+                    if (name == null || name.isEmpty) {
+                      return "Desciption can not be empty";
+                    }
+                  },
+                ),
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.05,
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  final formValid = formKey.currentState!.validate();
+                  if (!formValid) {
+                    return;
+                  }
+                  Navigator.pop(
+                      context,
+                      Task(
+                          name: nameController.text,
+                          dueDate: finalPickedDate,
+                          description: descriptionController.text));
+                },
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(const Color(0xFFEE6F57)),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(50)),
+                    ),
                   ),
                 ),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
-                child: Text(
-                  style: TextStyle(fontSize: 17, color: Colors.white),
-                  "Add Task",
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 20.0),
+                  child: Text(
+                    style: TextStyle(fontSize: 17, color: Colors.white),
+                    "Add Task",
+                  ),
                 ),
-              ),
-            )
-          ]),
+              )
+            ]),
+          ),
         )),
       ),
     );

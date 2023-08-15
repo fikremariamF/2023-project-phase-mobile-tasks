@@ -1,5 +1,5 @@
-import 'package:add_task/model/task.dart';
-import 'package:add_task/presentation/todo_page.dart';
+import 'package:add_task/domain/entities/task.dart';
+import 'package:add_task/presentation/pages/todo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

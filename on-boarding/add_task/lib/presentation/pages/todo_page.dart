@@ -1,9 +1,9 @@
-import 'package:add_task/presentation/Task_page.dart';
-import 'package:add_task/presentation/create_task_page.dart';
+import 'package:add_task/presentation/pages/Task_page.dart';
+import 'package:add_task/presentation/pages/create_task_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../model/task.dart';
+import '../../domain/entities/task.dart';
 
 class TodoPage extends StatefulWidget {
   static const String routeName = '/todo';
@@ -13,13 +13,15 @@ class TodoPage extends StatefulWidget {
 }
 
 class _TodoPageState extends State<TodoPage> {
-  List<Task> items = [
-    Task(
-        name: "UI/UX App Design",
-        dueDate: DateTime.now(),
-        description:
-            "some more descriptSADFJKH SADFJS JDASLKJFHALSDF HLJASDFHLJASDHF LJASDFH LAJSDHF LASJDFH ALSDJFHion goes here lorum iajkhf asdjfkh dsjfh akjsh jkasdlkj fhkasjhf jkdsahf kjdhs fjsdah bhlsadflsajdfhasljd flsajdhf lasjdf ljsa df")
-  ];
+  List<Task> items = [];
+
+  Color determineCardColor(Task task) {
+    if (task.done) {
+      return Color.fromARGB(255, 239, 255, 240);
+    }
+    return Color.fromARGB(255, 248, 248, 248);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,14 +56,18 @@ class _TodoPageState extends State<TodoPage> {
                 child: Column(
               children: items
                   .map((item) => GestureDetector(
-                        onTap: () => {
-                          Navigator.push(
+                        onTap: () async {
+                          final result = await Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                      TaskDetailPage(task: item)))
+                                      TaskDetailPage(task: item)));
+                          setState(() {
+                            item.done = result;
+                          });
                         },
                         child: Card(
+                          color: determineCardColor(item),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 0),

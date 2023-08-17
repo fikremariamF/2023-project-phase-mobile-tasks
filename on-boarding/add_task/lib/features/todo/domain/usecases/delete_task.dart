@@ -3,9 +3,9 @@ import 'package:add_task/features/todo/domain/entities/task.dart';
 import 'package:add_task/features/todo/domain/repositories/tasks_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class GetTasks {
+class DeleteTasks {
   final TaskRepository repository;
-  GetTasks(this.repository);
+  DeleteTasks(this.repository);
 
   Future<Either<Failure, Todo>> deleteTask(String id) async {
     return await repository.deleteTask(id);

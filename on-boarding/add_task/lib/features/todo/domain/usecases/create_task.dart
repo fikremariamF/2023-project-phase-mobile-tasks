@@ -8,15 +8,9 @@ class CreateTask {
   CreateTask(this.repository);
 
   Future<Either<Failure, Todo>> createTask(
-      {required String id,
-      String? name,
-      String? description,
-      DateTime? duedate}) async {
-    final response = await repository.updateTask(
-      id: id,
-      name: name,
-      description: description,
-      duedate: duedate,
+      Todo todo) async {
+    final response = await repository.createTask(
+      todo
     );
 
     return response.fold(

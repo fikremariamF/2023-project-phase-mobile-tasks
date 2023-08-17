@@ -3,11 +3,11 @@ import 'package:add_task/features/todo/domain/entities/task.dart';
 import 'package:add_task/features/todo/domain/repositories/tasks_repository.dart';
 import 'package:dartz/dartz.dart';
 
-class DeleteTask {
+class MarkTask {
   final TaskRepository repository;
-  DeleteTask(this.repository);
+  MarkTask(this.repository);
 
-  Future<Either<Failure, Todo>> deleteTask(String id) async {
-    return await repository.deleteTask(id);
+  Future<Either<Failure, Todo>> markTask(Todo todo) async {
+    return await repository.markTask(todo);
   }
 }

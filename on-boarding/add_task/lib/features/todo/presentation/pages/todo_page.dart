@@ -1,5 +1,5 @@
-import 'package:add_task/presentation/pages/Task_page.dart';
-import 'package:add_task/presentation/pages/create_task_page.dart';
+import 'package:add_task/features/todo/presentation/pages/Task_page.dart';
+import 'package:add_task/features/todo/presentation/pages/create_task_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -13,9 +13,9 @@ class TodoPage extends StatefulWidget {
 }
 
 class _TodoPageState extends State<TodoPage> {
-  List<Task> items = [];
+  List<Todo> items = [];
 
-  Color determineCardColor(Task task) {
+  Color determineCardColor(Todo task) {
     if (task.done) {
       return Color.fromARGB(255, 239, 255, 240);
     }

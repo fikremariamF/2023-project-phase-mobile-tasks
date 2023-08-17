@@ -1,5 +1,7 @@
-import 'package:add_task/domain/entities/task.dart';
-import 'package:add_task/presentation/pages/todo_page.dart';
+import 'dart:math';
+
+import 'package:add_task/features/todo/domain/entities/task.dart';
+import 'package:add_task/features/todo/presentation/pages/todo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -25,7 +27,7 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
       setState(() {
         finalPickedDate = pickedDate;
       });
-      
+
       // ignore: use_build_context_synchronously
       TimeOfDay? pickedTime = await showTimePicker(
         context: context,
@@ -215,10 +217,11 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
                 }
                 Navigator.pop(
                     context,
-                    Task(
+                    Todo(
                         name: nameController.text,
                         dueDate: finalPickedDate,
-                        description: descriptionController.text));
+                        description: descriptionController.text,
+                        id: "329"));
               },
               style: ButtonStyle(
                 backgroundColor:

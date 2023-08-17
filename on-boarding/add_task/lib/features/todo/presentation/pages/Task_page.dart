@@ -6,7 +6,7 @@ import '../../domain/entities/task.dart';
 class TaskDetailPage extends StatefulWidget {
   static const String routeName = '/task';
 
-  final Task task;
+  final Todo task;
   TaskDetailPage({required this.task});
 
   @override

@@ -16,7 +16,7 @@ class UpdateTask {
       id: id,
       name: name,
       description: description,
-      duedate: duedate,
+      dueDate: duedate,
     );
 
     return response.fold(

@@ -12,6 +12,6 @@ abstract class TaskRepository {
       {required String id,
       String? name,
       String? description,
-      DateTime? duedate});
+      DateTime? dueDate});
   Future<Either<Failure, Todo>> deleteTask(String id);
 }

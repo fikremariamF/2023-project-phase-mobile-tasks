@@ -57,7 +57,7 @@ class TaskRepositoryImpl implements TaskRepository {
   Future<Either<Failure, Todo>> createTask(Todo task) async{
     if (await networkInfo.isConnected) {
       try {
-        final TodoModel response = await remoteDatasource.createTask(task);
+        final TodoModel response = await remoteDatasource.createTask(task as TodoModel);
         return Right(response);
       } on ServerException {
         return Left(ServerFailure());
@@ -85,7 +85,7 @@ class TaskRepositoryImpl implements TaskRepository {
   Future<Either<Failure, Todo>> markTask(Todo task) async {
     if (await networkInfo.isConnected) {
       try {
-        final TodoModel response = await remoteDatasource.markTask(task);
+        final TodoModel response = await remoteDatasource.markTask(task as TodoModel);
         return Right(response);
       } on ServerException {
         return Left(ServerFailure());
@@ -96,10 +96,10 @@ class TaskRepositoryImpl implements TaskRepository {
   }
   
   @override
-  Future<Either<Failure, Todo>> updateTask({required String id, String? name, String? description, DateTime? duedate}) async {
+  Future<Either<Failure, Todo>> updateTask({required String id, String? name, String? description, DateTime? dueDate}) async {
     if (await networkInfo.isConnected) {
       try {
-        final TodoModel response = await remoteDatasource.updateTask(id:id, name: name, description: description, duedate: duedate);
+        final TodoModel response = await remoteDatasource.updateTask(id:id, name: name, description: description, dueDate: dueDate);
         return Right(response);
       } on ServerException {
         return Left(ServerFailure());

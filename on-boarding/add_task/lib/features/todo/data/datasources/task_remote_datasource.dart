@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import '../../../../core/error/exceptions.dart';
-import '../../domain/entities/task.dart';
 import '../model/task_model.dart';
 
 abstract class TaskRemoteDatasource {

@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:add_task/features/todo/domain/entities/task.dart';
-import 'package:add_task/features/todo/presentation/pages/todo_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -105,6 +102,7 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
                   if (name == null || name.isEmpty) {
                     return "Task name can not be empty";
                   }
+                  return null;
                 },
               ),
             ),
@@ -155,6 +153,7 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
                   if (name == null || name.isEmpty) {
                     return "Due-Date can not be empty";
                   }
+                  return null;
                 },
               ),
             ),
@@ -203,6 +202,7 @@ class _CreateTaskPageState extends State<CreateTaskPage> {
                   if (name == null || name.isEmpty) {
                     return "Desciption can not be empty";
                   }
+                  return null;
                 },
               ),
             ),

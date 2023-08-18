@@ -9,20 +9,26 @@ import '../../domain/usecases/get_task.dart';
 import '../../domain/usecases/get_tasks.dart';
 import '../../domain/usecases/mark_task.dart';
 import '../../domain/usecases/update_task.dart';
-import '../../injection_container.dart';
 
 List<Todo> tasks = [];
 
 class TaskBloc extends Bloc<TaskEvent, TaskState> {
-  TaskBloc() : super(TaskInitial()) {
-    final GetTasks getTasks = sl();
-    final GetTask getTask = sl();
+  final GetTasks getTasks;
+  final GetTask getTask;
 
-    final DeleteTask deleteTask = sl();
-    final UpdateTask updateTask = sl();
-    final MarkTask markTask = sl();
-    final CreateTask createTask = sl();
+  final DeleteTask deleteTask;
+  final UpdateTask updateTask;
+  final MarkTask markTask;
+  final CreateTask createTask;
 
+  TaskBloc(
+      {required this.getTasks,
+      required this.getTask,
+      required this.deleteTask,
+      required this.updateTask,
+      required this.markTask,
+      required this.createTask})
+      : super(TaskInitial()) {
     on<TaskEvent>((event, emit) async {
       if (event is TasksRequested) {
         emit(Loading());
@@ -85,4 +91,3 @@ class TaskBloc extends Bloc<TaskEvent, TaskState> {
     });
   }
 }
-

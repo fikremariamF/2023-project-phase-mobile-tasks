@@ -17,7 +17,7 @@ final sl = GetIt.instance;
 Future<void> init() async {
   //! Features - Task Management
   // Bloc
-  sl.registerFactory(() => TaskBloc());
+  sl.registerFactory(() => TaskBloc(createTask: sl(), deleteTask: sl(), getTask: sl(), getTasks: sl(), markTask: sl(), updateTask: sl()));
 
   // Use cases
   sl.registerLazySingleton(() => GetTask(sl()));

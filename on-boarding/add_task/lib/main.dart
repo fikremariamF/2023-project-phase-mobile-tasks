@@ -1,7 +1,9 @@
 import 'package:add_task/features/todo/presentation/pages/todo_page.dart';
 import 'package:flutter/material.dart';
+import './features/todo/injection_container.dart' as injection;
 
 void main() {
+  injection.init();
   runApp(const MyApp());
 }
 
